@@ -1,0 +1,52 @@
+enum question_type {
+  multiple_choice
+  select_all
+}
+
+table answers {
+  id serial [pk, not null, increment]
+  question_id integer [not null]
+  answer_choices text[]
+}
+
+table polls {
+  id serial [pk, not null, increment]
+  user_id integer [not null]
+  is_request boolean [not null, default: false]
+  is_active boolean [not null, default: false]
+  is_completed boolean [not null, default: false]
+  title text [not null]
+  suggested_duration integer
+  comment text [default: `NULL`]
+  created_at timestamp [not null, default: `now()`]
+  ends_at timestamp [not null]
+}
+
+table questions {
+  id serial [pk, not null, increment]
+  poll_id integer [not null]
+  order integer [not null]
+  question_type question_type [not null]
+  question text
+  answer_choices text[]
+}
+
+table user_has_done_poll {
+  user_id integer [not null]
+  poll_id integer [not null]
+}
+
+table users {
+  id serial [pk, not null, increment]
+  netid text [not null]
+  is_admin boolean [not null, default: false]
+  is_email_list boolean [not null, default: false]
+}
+
+ref: answers.question_id > questions.id
+
+ref: polls.user_id > users.id
+
+ref: questions.poll_id > polls.id
+
+ref: user_has_done_poll.poll_id - polls.id
