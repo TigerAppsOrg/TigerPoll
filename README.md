@@ -37,6 +37,9 @@ The application is built using the following technologies:
 
 If you would like to contribute to the project, please reach out to the TigerApps team at **it.admin@tigerapps.org**.
 
+## Credits
+The TigerPoll project was created in collaboration between Princeton USG and TigerApps by software developers Caroline Rasmussen '26, Joshua Lau '26, and Leo Stepanewk '25 with input from USG Elections Manager Alex Sorgini '26. 
+
 ## License
 
 This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
