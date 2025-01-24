@@ -67,8 +67,8 @@ export const questions = pgTable("questions", {
         .references(() => polls.id),
     order: integer("order").notNull(),
     questionType: questionTypeEnum("question_type").notNull(),
-    question: text("question"),
-    answerChoices: text("answer_choices").array()
+    question: text("question").notNull(),
+    answerChoices: text("answer_choices").array().notNull()
 });
 
 export const questionRelations = relations(questions, ({ many, one }) => ({
@@ -84,7 +84,7 @@ export const answers = pgTable("answers", {
     questionId: integer("question_id")
         .notNull()
         .references(() => questions.id),
-    content: text("answer_choices").array()
+    content: text("answer_choices").array().notNull()
 });
 
 export const answerRelations = relations(answers, ({ one }) => ({
