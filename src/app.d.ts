@@ -2,7 +2,7 @@ import type { Session } from "svelte-kit-cookie-session";
 
 export type SessionData = {
     netid: string;
-    mail: string;
+    email: string;
 };
 
 declare global {
