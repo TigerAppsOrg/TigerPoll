@@ -6,12 +6,12 @@ enum question_type {
 table answers {
   id serial [pk, not null, increment]
   question_id integer [not null]
-  answer_choices text[]
+  answer_choices text[] [not null]
 }
 
 table polls {
   id serial [pk, not null, increment]
-  user_id integer [not null]
+  user_id text [not null]
   is_request boolean [not null, default: false]
   is_active boolean [not null, default: false]
   is_completed boolean [not null, default: false]
@@ -27,18 +27,17 @@ table questions {
   poll_id integer [not null]
   order integer [not null]
   question_type question_type [not null]
-  question text
-  answer_choices text[]
+  question text [not null]
+  answer_choices text[] [not null]
 }
 
 table user_has_done_poll {
-  user_id integer [not null]
+  user_id text [not null]
   poll_id integer [not null]
 }
 
 table users {
-  id serial [pk, not null, increment]
-  netid text [not null]
+  netid text [pk, not null]
   email text [not null]
   is_admin boolean [not null, default: false]
   is_email_list boolean [not null, default: false]
@@ -46,10 +45,10 @@ table users {
 
 ref: answers.question_id > questions.id
 
-ref: polls.user_id > users.id
+ref: polls.user_id > users.netid
 
 ref: questions.poll_id > polls.id
 
 ref: user_has_done_poll.poll_id > polls.id
 
-ref: user_has_done_poll.user_id > users.id
+ref: user_has_done_poll.user_id > users.netid
