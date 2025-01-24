@@ -48,6 +48,7 @@
     "dependencies": {
         "@tailwindcss/forms": "^0.5.9",
         "drizzle-orm": "^0.36.0",
-        "postgres": "^3.4.4"
+        "postgres": "^3.4.4",
+        "svelte-kit-cookie-session": "^4.1.1"
     }
 }
