@@ -59,7 +59,6 @@ export class CASClient {
 
             return {
                 netid: userInfo.user,
-                displayname: userInfo.attributes.displayname[0] || "Student",
                 mail: userInfo.attributes.mail[0] || "",
             };
         } else if (this.hasKey(serviceResponse, "authenticationFailure")) {
@@ -97,6 +96,6 @@ export class CASClient {
      * @param sessionData
      */
     static check(sessionData: SessionData) {
-        if (!sessionData.displayname) this.authenticate();
+        if (!sessionData.netid) this.authenticate();
     }
 }

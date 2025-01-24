@@ -2,7 +2,6 @@ import type { Session } from "svelte-kit-cookie-session";
 
 export type SessionData = {
     netid: string;
-    displayname: string;
     mail: string;
 };
 
