@@ -23,8 +23,7 @@ export const questionTypeEnum = pgEnum("question_type", [
 //----------------------------------------------------------------------
 
 export const users = pgTable("users", {
-    id: serial("id").primaryKey().notNull(),
-    netid: text("netid").notNull(),
+    netid: text("netid").notNull().primaryKey(),
     email: text("email").notNull(),
     isAdmin: boolean("is_admin").notNull().default(false),
     isEmailList: boolean("is_email_list").notNull().default(false)
@@ -37,9 +36,9 @@ export const userRelations = relations(users, ({ many }) => ({
 
 export const polls = pgTable("polls", {
     id: serial("id").primaryKey().notNull(),
-    userId: integer("user_id")
+    userId: text("user_id")
         .notNull()
-        .references(() => users.id),
+        .references(() => users.netid),
     isRequest: boolean("is_request").notNull().default(false),
     isActive: boolean("is_active").notNull().default(false),
     isCompleted: boolean("is_completed").notNull().default(false),
@@ -56,7 +55,7 @@ export const pollRelations = relations(polls, ({ many, one }) => ({
     questions: many(questions),
     user: one(users, {
         fields: [polls.userId],
-        references: [users.id]
+        references: [users.netid]
     }),
     userHasDonePolls: many(userHasDonePoll)
 }));
@@ -96,9 +95,9 @@ export const answerRelations = relations(answers, ({ one }) => ({
 }));
 
 export const userHasDonePoll = pgTable("user_has_done_poll", {
-    userId: integer("user_id")
+    userId: text("user_id")
         .notNull()
-        .references(() => users.id),
+        .references(() => users.netid),
     pollId: integer("poll_id")
         .notNull()
         .references(() => polls.id)
@@ -113,7 +112,7 @@ export const userHasDonePollRelations = relations(
         }),
         user: one(users, {
             fields: [userHasDonePoll.userId],
-            references: [users.id]
+            references: [users.netid]
         })
     })
 );
