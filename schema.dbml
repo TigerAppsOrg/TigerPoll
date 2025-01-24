@@ -39,6 +39,7 @@ table user_has_done_poll {
 table users {
   id serial [pk, not null, increment]
   netid text [not null]
+  email text [not null]
   is_admin boolean [not null, default: false]
   is_email_list boolean [not null, default: false]
 }
@@ -49,4 +50,6 @@ ref: polls.user_id > users.id
 
 ref: questions.poll_id > polls.id
 
-ref: user_has_done_poll.poll_id - polls.id
+ref: user_has_done_poll.poll_id > polls.id
+
+ref: user_has_done_poll.user_id > users.id

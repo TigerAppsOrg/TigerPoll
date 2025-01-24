@@ -58,7 +58,7 @@ export const pollRelations = relations(polls, ({ many, one }) => ({
         fields: [polls.userId],
         references: [users.id]
     }),
-    userHasDonePolls: many(userHasDonePoll),
+    userHasDonePolls: many(userHasDonePoll)
 }));
 
 export const questions = pgTable("questions", {
@@ -101,7 +101,7 @@ export const userHasDonePoll = pgTable("user_has_done_poll", {
         .references(() => users.id),
     pollId: integer("poll_id")
         .notNull()
-        .references(() => polls.id),
+        .references(() => polls.id)
 });
 
 export const userHasDonePollRelations = relations(
@@ -114,5 +114,6 @@ export const userHasDonePollRelations = relations(
         user: one(users, {
             fields: [userHasDonePoll.userId],
             references: [users.id]
-        }),
-    }));
+        })
+    })
+);
