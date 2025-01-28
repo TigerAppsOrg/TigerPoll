@@ -8,13 +8,43 @@ import type { PollDetails, PollMetadata } from "./types";
  * @param netid user's netid
  * @returns list of poll metadata
  */
-// TODO: Implement this function
 export const getPollMetadatas = async (
     netid: string
 ): Promise<PollMetadata[]> => {
     // Open a transaction to ensure data consistency
     const pollMetadatas = await db.transaction(async (tx) => {
-        // TODO: Fill in
+        // Retrieve poll details
+        const poll = await tx
+            .select({
+                id: polls.id,
+                title: polls.title,
+                createdAt: polls.createdAt,
+                endsAt: polls.endsAt,
+                isCompleted: polls.isCompleted
+            })
+            .from(polls);
+
+        // Retrieve hasDonePoll details
+        const hasDonePolls = await tx
+            .select()
+            .from(userHasDonePoll)
+            .where(and(eq(userHasDonePoll.userId, netid)));
+
+        // Create a set of the user completed pollIds
+        const donePollIds = new Set(hasDonePolls.map((row) => row.pollId));
+
+        // Construct the PollMetadata
+        const pollArray = poll.map((onePoll) => {
+            return {
+                id: onePoll.id,
+                title: onePoll.title,
+                createdAt: onePoll.createdAt.toString(),
+                endsAt: onePoll.endsAt.toString(),
+                isCompleted: onePoll.isCompleted,
+                hasDone: donePollIds.has(onePoll.id)
+            };
+        });
+        return pollArray;
     });
 
     return pollMetadatas;
