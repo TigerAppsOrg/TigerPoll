@@ -48,7 +48,7 @@ export const polls = pgTable("polls", {
     createdAt: timestamp("created_at")
         .notNull()
         .default(sql`now()`),
-    ends_at: timestamp("ends_at").notNull()
+    endsAt: timestamp("ends_at").notNull()
 });
 
 export const pollRelations = relations(polls, ({ many, one }) => ({
