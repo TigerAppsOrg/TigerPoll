@@ -59,7 +59,7 @@ export class CASClient {
 
             return {
                 netid: userInfo.user,
-                mail: userInfo.attributes.mail[0] || ""
+                email: userInfo.attributes.mail[0] || ""
             };
         } else if (this.hasKey(serviceResponse, "authenticationFailure")) {
             console.error("CAS authentication failure:", serviceResponse);
