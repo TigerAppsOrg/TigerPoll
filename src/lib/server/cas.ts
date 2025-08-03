@@ -9,7 +9,7 @@
 
 import { redirect } from "@sveltejs/kit";
 import type { SessionData } from "../../app";
-import { httpCodes } from "$lib/httpCodes";
+import { httpCodes } from "$lib/utils/httpCodes";
 import { PUBLIC_APP_URL } from "$env/static/public";
 
 export class CASClient {
