@@ -1,10 +1,10 @@
 <script module>
-    import Thing from "./Thing.svelte";
+    import QuestionResults from "./QuestionResults.svelte";
     import { defineMeta } from "@storybook/addon-svelte-csf";
 
     const { Story } = defineMeta({
-        title: "The Thing",
-        component: Thing,
+        title: "Question Results",
+        component: QuestionResults,
     });
 </script>
 
