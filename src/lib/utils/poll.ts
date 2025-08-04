@@ -1,5 +1,10 @@
 export type QuestionType = "multiple_choice" | "select_all";
 
+export const typeLabels: Record<QuestionType, string> = {
+    multiple_choice: "Multiple Choice",
+    select_all: "Select All That Apply"
+};
+
 export type Question = {
     id: number;
     pollId: number;

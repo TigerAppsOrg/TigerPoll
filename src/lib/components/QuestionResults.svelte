@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { QuestionType } from "$lib/server/types";
-    import type { QuestionResults } from "$lib/utils/poll";
+    import { typeLabels, type QuestionResults } from "$lib/utils/poll";
     import { colorMap, type Color } from "$lib/utils/theme";
     import SealCheck from "phosphor-svelte/lib/SealCheck";
     import { onMount } from "svelte";
@@ -10,11 +10,6 @@
         winnerColor?: Color;
         defaultColor?: Color;
     }
-
-    const TYPE_LABELS: Record<QuestionType, string> = {
-        multiple_choice: "Multiple Choice",
-        select_all: "Select All That Apply"
-    };
 
     const {
         questionResults,
@@ -65,7 +60,7 @@
             {questionResults.order}. {questionResults.question}
         </h3>
         <p class="text-sm italic text-gray-dark-muted">
-            {TYPE_LABELS[questionResults.type]}
+            {typeLabels[questionResults.type]}
         </p>
     </div>
     <div class="mt-4 flex flex-col gap-2">
