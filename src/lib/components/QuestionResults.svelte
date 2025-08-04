@@ -27,29 +27,29 @@
 
 <article class="rounded-xl bg-white p-4 shadow-lg">
     <div>
-        <h3 class="text-lg font-semibold text-slate-900">
+        <h3 class="text-gray-dark text-lg font-semibold">
             {questionResults.order}. {questionResults.question}
         </h3>
-        <p class="text-sm text-slate-500">
+        <p class="text-gray-dark-muted text-sm">
             {TYPE_LABELS[questionResults.type]}
         </p>
     </div>
     <div class="mt-4 flex flex-col gap-2">
         {#each optionsWithPercentage as option}
             <div
-                class="relative h-8 overflow-hidden rounded-full bg-slate-50 shadow-sm">
+                class="bg-gray-light relative h-8 overflow-hidden rounded-full shadow-sm">
                 <div
                     class="absolute h-full rounded-lg transition-all duration-300 {option.isHighest
-                        ? 'bg-red-500'
-                        : 'bg-blue-500'}"
+                        ? 'bg-orange-light'
+                        : 'bg-indigo-light'}"
                     style="width: {option.percentage}%">
                 </div>
                 <div
                     class="relative z-20 flex h-full w-full items-center justify-between px-4">
-                    <span class="text-sm font-medium text-slate-700">
+                    <span class="text-gray-dark text-sm font-medium">
                         {option.answer}
                     </span>
-                    <span class="text-sm text-slate-500">
+                    <span class="text-gray-dark text-sm">
                         {option.percentage}% ({option.count} votes)
                     </span>
                 </div>
