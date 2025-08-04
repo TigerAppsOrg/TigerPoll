@@ -8,41 +8,41 @@ const config: Config = {
             colors: {
                 red: {
                     default: "#E63946",
-                    dark: "#A31621",
-                    light: "#FFCCCB"
+                    dark: "#8B1319",
+                    light: "#FFE5E5"
                 },
                 orange: {
                     default: "#F4845F",
-                    dark: "#CB5C1C",
-                    light: "#FFDAB9"
+                    dark: "#A03912",
+                    light: "#FFEDE5"
                 },
                 yellow: {
                     default: "#FFD166",
-                    dark: "#E6B800",
-                    light: "#FFFACD"
+                    dark: "#B8A000",
+                    light: "#FFFDE5"
                 },
                 green: {
                     default: "#06D6A0",
-                    dark: "#078C5F",
-                    light: "#D0F0C0"
+                    dark: "#056B4A",
+                    light: "#E5FBF5"
                 },
                 blue: {
                     default: "#118AB2",
-                    dark: "#073B4C",
-                    light: "#B6DEF7"
+                    dark: "#052A36",
+                    light: "#E5F4FB"
                 },
                 indigo: {
                     default: "#5C6BC0",
-                    dark: "#303F9F",
-                    light: "#C5CAE9"
+                    dark: "#252E7A",
+                    light: "#E8EAFC"
                 },
                 violet: {
                     default: "#9B5DE5",
-                    dark: "#6A2CB0",
-                    light: "#E0CFFC"
+                    dark: "#4A1C85",
+                    light: "#F2E5FF"
                 },
                 gray: {
-                    "light": "#F0F0F0",
+                    "light": "#F8F8F8",
                     "light-accent": "#E0E0E0",
                     "light-muted": "#D0D0D0",
                     "dark": "#242424",

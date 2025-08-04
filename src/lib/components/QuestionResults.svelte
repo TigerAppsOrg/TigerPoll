@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { QuestionType } from "$lib/server/types";
     import type { QuestionResults } from "$lib/utils/poll";
+    import SealCheck from "phosphor-svelte/lib/SealCheck";
 
     interface Props {
         questionResults: QuestionResults;
@@ -45,18 +46,27 @@
                 class="bg-gray-light relative h-8 overflow-hidden rounded-full shadow-sm">
                 <div
                     class="absolute h-full rounded-lg transition-all duration-300 {option.isHighest
-                        ? 'bg-orange-light'
+                        ? 'bg-red-light'
                         : 'bg-indigo-light'}"
                     style="width: {option.percentage}%">
                 </div>
                 <div
-                    class="relative z-20 flex h-full w-full items-center justify-between px-4">
-                    <span class="text-gray-dark text-sm font-medium">
+                    class="relative z-20 flex h-full w-full items-center justify-between px-4
+                        {option.isHighest
+                        ? 'text-red-dark'
+                        : 'text-indigo-dark'}
+                    ">
+                    <span class="text-sm font-medium">
                         {option.answer}
                     </span>
-                    <span class="text-gray-dark text-sm">
-                        {option.percentage}% ({option.count} votes)
-                    </span>
+                    <div class="flex items-center gap-2">
+                        {#if option.isHighest}
+                            <SealCheck class="text-orange-dark" size={16} />
+                        {/if}
+                        <span class="text-sm">
+                            {option.percentage}% ({option.count} votes)
+                        </span>
+                    </div>
                 </div>
             </div>
         {/each}
