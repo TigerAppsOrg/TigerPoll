@@ -7,9 +7,10 @@ export type AnswerOptionResults = {
 
 export type QuestionResults = {
     id: string;
-    poll_id: number;
+    pollId: number;
     type: QuestionType;
     order: number;
     question: string;
+    answerCount: number;
     options: AnswerOptionResults[];
 }
