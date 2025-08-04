@@ -61,10 +61,10 @@
 
 <article class="rounded-xl bg-white p-4 shadow-lg">
     <div>
-        <h3 class="text-gray-dark text-lg font-semibold">
+        <h3 class="text-lg font-semibold text-gray-dark">
             {questionResults.order}. {questionResults.question}
         </h3>
-        <p class="text-gray-dark-muted text-sm italic">
+        <p class="text-sm italic text-gray-dark-muted">
             {TYPE_LABELS[questionResults.type]}
         </p>
     </div>
@@ -72,7 +72,7 @@
         {#each optionsWithPercentage as option, index}
             {@const colorClasses = getColorClasses(option.isHighest)}
             <div
-                class="bg-gray-light relative h-8 overflow-hidden rounded-full shadow-sm">
+                class="relative h-8 overflow-hidden rounded-full bg-gray-light shadow-sm">
                 <div
                     class="absolute h-full rounded-lg transition-all duration-700 ease-out {colorClasses.light}"
                     style="width: {animatedWidths[index]}%">

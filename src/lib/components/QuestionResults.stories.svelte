@@ -4,7 +4,35 @@
 
     const { Story } = defineMeta({
         title: "Question Results",
-        component: QuestionResults
+        component: QuestionResults,
+        argTypes: {
+            winnerColor: {
+                control: { type: "select" },
+                options: [
+                    "red",
+                    "orange",
+                    "yellow",
+                    "green",
+                    "blue",
+                    "indigo",
+                    "violet"
+                ],
+                type: { name: "string" } // Override the inferred type
+            },
+            defaultColor: {
+                control: { type: "select" },
+                options: [
+                    "red",
+                    "orange",
+                    "yellow",
+                    "green",
+                    "blue",
+                    "indigo",
+                    "violet"
+                ],
+                type: { name: "string" } // Override the inferred type
+            }
+        }
     });
 </script>
 
@@ -24,7 +52,9 @@
                 { answer: "TypeScript", count: 28 },
                 { answer: "Go", count: 15 }
             ]
-        }
+        },
+        winnerColor: "green",
+        defaultColor: "indigo"
     }} />
 
 <Story
@@ -44,5 +74,7 @@
                 { answer: "Forbes", count: 29 },
                 { answer: "CJL", count: 5 }
             ]
-        }
+        },
+        winnerColor: "red",
+        defaultColor: "blue"
     }} />

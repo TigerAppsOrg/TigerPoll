@@ -3,6 +3,13 @@ import type { Config } from "tailwindcss";
 const config: Config = {
     darkMode: ["class"],
     content: ["./src/**/*.{html,js,svelte,ts}"],
+    safelist: [
+        // Dynamic color classes used in QuestionResults
+        'bg-red-light', 'bg-orange-light', 'bg-yellow-light', 'bg-green-light', 
+        'bg-blue-light', 'bg-indigo-light', 'bg-violet-light',
+        'text-red-dark', 'text-orange-dark', 'text-yellow-dark', 'text-green-dark',
+        'text-blue-dark', 'text-indigo-dark', 'text-violet-dark'
+    ],
     theme: {
         extend: {
             colors: {
