@@ -26,9 +26,9 @@ export const colorMap: Record<Color, ColorTags> = Object.fromEntries(
     colors.map((color) => [
         color,
         {
-            light: `bg-${color}-light`,
-            dark: `text-${color}-dark`,
-            default: `bg-${color}-default`
+            light: `bg-std-${color}-light`,
+            dark: `text-std-${color}-dark`,
+            default: `bg-std-${color}-default`
         }
     ])
 ) as Record<Color, ColorTags>;

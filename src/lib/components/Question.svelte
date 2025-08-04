@@ -54,7 +54,7 @@
         {#each question.options as option}
             {@const colorClasses = getColorClasses(isSelected(option))}
             <button
-                class="relative h-8 overflow-hidden rounded-full bg-gray-light shadow-sm transition-colors duration-200 {isSelected(
+                class="relative h-8 overflow-hidden rounded-full bg-gray-light shadow-sm transition-colors duration-150 {isSelected(
                     option
                 )
                     ? colorClasses.light

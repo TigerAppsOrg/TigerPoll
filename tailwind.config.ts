@@ -4,60 +4,60 @@ const config: Config = {
     darkMode: ["class"],
     content: ["./src/**/*.{html,js,svelte,ts}"],
     safelist: [
-        "bg-red-light",
-        "bg-orange-light",
-        "bg-yellow-light",
-        "bg-green-light",
-        "bg-blue-light",
-        "bg-indigo-light",
-        "bg-violet-light",
-        "text-red-dark",
-        "text-orange-dark",
-        "text-yellow-dark",
-        "text-green-dark",
-        "text-blue-dark",
-        "text-indigo-dark",
-        "text-violet-dark"
+        "bg-std-red-light",
+        "bg-std-orange-light",
+        "bg-std-yellow-light",
+        "bg-std-green-light",
+        "bg-std-blue-light",
+        "bg-std-indigo-light",
+        "bg-std-violet-light",
+        "text-std-red-dark",
+        "text-std-orange-dark",
+        "text-std-yellow-dark",
+        "text-std-green-dark",
+        "text-std-blue-dark",
+        "text-std-indigo-dark",
+        "text-std-violet-dark"
     ],
     theme: {
         extend: {
             colors: {
-                red: {
+                "std-red": {
                     default: "#E63946",
                     dark: "#8B1319",
                     light: "#FFE5E5"
                 },
-                orange: {
+                "std-orange": {
                     default: "#F4845F",
                     dark: "#A03912",
                     light: "#FFEDE5"
                 },
-                yellow: {
+                "std-yellow": {
                     default: "#FFD166",
                     dark: "#998500",
                     light: "#FFFDE5"
                 },
-                green: {
+                "std-green": {
                     default: "#06D6A0",
                     dark: "#056B4A",
                     light: "#E5FBF5"
                 },
-                blue: {
+                "std-blue": {
                     default: "#118AB2",
                     dark: "#052A36",
                     light: "#E5F4FB"
                 },
-                indigo: {
+                "std-indigo": {
                     default: "#5C6BC0",
                     dark: "#252E7A",
                     light: "#E8EAFC"
                 },
-                violet: {
+                "std-violet": {
                     default: "#9B5DE5",
                     dark: "#4A1C85",
                     light: "#F2E5FF"
                 },
-                gray: {
+                "gray": {
                     "light": "#F8F8F8",
                     "light-accent": "#E8E8E8",
                     "light-muted": "#D0D0D0",
