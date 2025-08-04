@@ -52,9 +52,7 @@
                 { answer: "TypeScript", count: 28 },
                 { answer: "Go", count: 15 }
             ]
-        },
-        winnerColor: "green",
-        defaultColor: "indigo"
+        }
     }} />
 
 <Story
@@ -74,7 +72,5 @@
                 { answer: "Forbes", count: 29 },
                 { answer: "CJL", count: 5 }
             ]
-        },
-        winnerColor: "red",
-        defaultColor: "blue"
+        }
     }} />
