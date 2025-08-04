@@ -40,7 +40,7 @@
     name="Multiple Choice"
     args={{
         questionResults: {
-            id: "1",
+            id: 1,
             pollId: 123,
             type: "multiple_choice",
             order: 1,
@@ -59,7 +59,7 @@
     name="Select All"
     args={{
         questionResults: {
-            id: "2",
+            id: 2,
             pollId: 123,
             type: "select_all",
             order: 2,
