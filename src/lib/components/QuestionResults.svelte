@@ -15,14 +15,19 @@
     const maxVotes = Math.max(
         ...questionResults.options.map((option) => option.count)
     );
-    const optionsWithPercentage = questionResults.options.map((option) => ({
-        ...option,
-        percentage:
-            questionResults.answerCount > 0
-                ? Math.round((option.count / questionResults.answerCount) * 100)
-                : 0,
-        isHighest: option.count === maxVotes && maxVotes > 0
-    }));
+
+    const optionsWithPercentage = questionResults.options
+        .map((option) => ({
+            ...option,
+            percentage:
+                questionResults.answerCount > 0
+                    ? Math.round(
+                          (option.count / questionResults.answerCount) * 100
+                      )
+                    : 0,
+            isHighest: option.count === maxVotes && maxVotes > 0
+        }))
+        .sort((a, b) => b.count - a.count);
 </script>
 
 <article class="rounded-xl bg-white p-4 shadow-lg">
@@ -30,7 +35,7 @@
         <h3 class="text-gray-dark text-lg font-semibold">
             {questionResults.order}. {questionResults.question}
         </h3>
-        <p class="text-gray-dark-muted text-sm">
+        <p class="text-gray-dark-muted text-sm italic">
             {TYPE_LABELS[questionResults.type]}
         </p>
     </div>
