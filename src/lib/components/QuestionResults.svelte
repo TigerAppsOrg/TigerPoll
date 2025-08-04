@@ -3,6 +3,7 @@
     import type { QuestionResults } from "$lib/utils/poll";
     import { colorMap, type Color } from "$lib/utils/theme";
     import SealCheck from "phosphor-svelte/lib/SealCheck";
+    import { onMount } from "svelte";
 
     interface Props {
         questionResults: QuestionResults;
@@ -42,6 +43,20 @@
         const selectedColor = isWinner ? winnerColor : defaultColor;
         return colorMap[selectedColor];
     }
+
+    const PAGE_ANIMATION_DELAY_MS = 50;
+    const BAR_ANIMATION_DELAY_MS = 150;
+
+    let animatedWidths = $state(optionsWithPercentage.map(() => 0));
+    onMount(() => {
+        setTimeout(() => {
+            optionsWithPercentage.forEach((option, index) => {
+                setTimeout(() => {
+                    animatedWidths[index] = option.percentage;
+                }, index * BAR_ANIMATION_DELAY_MS);
+            });
+        }, PAGE_ANIMATION_DELAY_MS);
+    });
 </script>
 
 <article class="rounded-xl bg-white p-4 shadow-lg">
@@ -54,13 +69,13 @@
         </p>
     </div>
     <div class="mt-4 flex flex-col gap-2">
-        {#each optionsWithPercentage as option}
+        {#each optionsWithPercentage as option, index}
             {@const colorClasses = getColorClasses(option.isHighest)}
             <div
                 class="bg-gray-light relative h-8 overflow-hidden rounded-full shadow-sm">
                 <div
-                    class="absolute h-full rounded-lg transition-all duration-300 {colorClasses.light}"
-                    style="width: {option.percentage}%">
+                    class="absolute h-full rounded-lg transition-all duration-700 ease-out {colorClasses.light}"
+                    style="width: {animatedWidths[index]}%">
                 </div>
                 <div
                     class="relative z-20 flex h-full w-full items-center justify-between px-4 {colorClasses.dark}">
