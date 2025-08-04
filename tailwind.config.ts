@@ -4,11 +4,20 @@ const config: Config = {
     darkMode: ["class"],
     content: ["./src/**/*.{html,js,svelte,ts}"],
     safelist: [
-        // Dynamic color classes used in QuestionResults
-        'bg-red-light', 'bg-orange-light', 'bg-yellow-light', 'bg-green-light', 
-        'bg-blue-light', 'bg-indigo-light', 'bg-violet-light',
-        'text-red-dark', 'text-orange-dark', 'text-yellow-dark', 'text-green-dark',
-        'text-blue-dark', 'text-indigo-dark', 'text-violet-dark'
+        "bg-red-light",
+        "bg-orange-light",
+        "bg-yellow-light",
+        "bg-green-light",
+        "bg-blue-light",
+        "bg-indigo-light",
+        "bg-violet-light",
+        "text-red-dark",
+        "text-orange-dark",
+        "text-yellow-dark",
+        "text-green-dark",
+        "text-blue-dark",
+        "text-indigo-dark",
+        "text-violet-dark"
     ],
     theme: {
         extend: {
@@ -25,7 +34,7 @@ const config: Config = {
                 },
                 yellow: {
                     default: "#FFD166",
-                    dark: "#B8A000",
+                    dark: "#998500",
                     light: "#FFFDE5"
                 },
                 green: {
@@ -50,7 +59,7 @@ const config: Config = {
                 },
                 gray: {
                     "light": "#F8F8F8",
-                    "light-accent": "#E0E0E0",
+                    "light-accent": "#E8E8E8",
                     "light-muted": "#D0D0D0",
                     "dark": "#242424",
                     "dark-accent": "#333333",
