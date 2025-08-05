@@ -83,16 +83,17 @@
             class:bg-std-green-light={box.color === "std-green"}
             class:bg-std-orange-light={box.color === "std-orange"}>
             <div class="flex h-full w-full items-center justify-center">
-                <svelte:component
-                    this={box.icon}
-                    size={24}
-                    class={box.color === "std-violet"
-                        ? "text-std-violet-dark"
-                        : box.color === "std-blue"
-                          ? "text-std-blue-dark"
-                          : box.color === "std-green"
-                            ? "text-std-green-dark"
-                            : "text-std-orange-dark"} />
+                {#if box.icon}
+                    <box.icon
+                        size={24}
+                        class={box.color === "std-violet"
+                            ? "text-std-violet-dark"
+                            : box.color === "std-blue"
+                              ? "text-std-blue-dark"
+                              : box.color === "std-green"
+                                ? "text-std-green-dark"
+                                : "text-std-orange-dark"} />
+                {/if}
             </div>
         </div>
     {/each}
