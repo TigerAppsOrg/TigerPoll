@@ -1,3 +1,4 @@
+CREATE TYPE "public"."poll_state" AS ENUM('draft', 'request', 'active', 'completed');--> statement-breakpoint
 CREATE TYPE "public"."question_type" AS ENUM('multiple_choice', 'select_all');--> statement-breakpoint
 CREATE TABLE "answers" (
 	"id" serial PRIMARY KEY NOT NULL,
@@ -8,14 +9,14 @@ CREATE TABLE "answers" (
 CREATE TABLE "polls" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"user_id" text NOT NULL,
-	"is_request" boolean DEFAULT false NOT NULL,
-	"is_active" boolean DEFAULT false NOT NULL,
-	"is_completed" boolean DEFAULT false NOT NULL,
+	"state" "poll_state" DEFAULT 'draft' NOT NULL,
+	"are_results_public" boolean DEFAULT false NOT NULL,
 	"title" text NOT NULL,
-	"suggested_duration" integer,
-	"comment" text DEFAULT NULL,
+	"suggested_duration_days" integer,
+	"comment_to_admin" text DEFAULT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
-	"ends_at" timestamp NOT NULL
+	"begins_at" timestamp NOT NULL,
+	"ends_at" timestamp DEFAULT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "questions" (
@@ -33,10 +34,12 @@ CREATE TABLE "user_has_done_poll" (
 );
 --> statement-breakpoint
 CREATE TABLE "users" (
-	"netid" text PRIMARY KEY NOT NULL,
+	"id" serial PRIMARY KEY NOT NULL,
+	"netid" text NOT NULL,
 	"email" text NOT NULL,
 	"is_admin" boolean DEFAULT false NOT NULL,
-	"is_email_list" boolean DEFAULT false NOT NULL
+	"is_email_list" boolean DEFAULT false NOT NULL,
+	CONSTRAINT "users_netid_unique" UNIQUE("netid")
 );
 --> statement-breakpoint
 ALTER TABLE "answers" ADD CONSTRAINT "answers_question_id_questions_id_fk" FOREIGN KEY ("question_id") REFERENCES "public"."questions"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint

@@ -1,5 +1,5 @@
 {
-  "id": "ad78ed6b-d50c-48d3-9dfc-758d8758b26a",
+  "id": "3a556594-e2fe-4b59-b18d-6d12d273d52d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -65,22 +65,16 @@
           "primaryKey": false,
           "notNull": true
         },
-        "is_request": {
-          "name": "is_request",
-          "type": "boolean",
+        "state": {
+          "name": "state",
+          "type": "poll_state",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true,
-          "default": false
+          "default": "'draft'"
         },
-        "is_active": {
-          "name": "is_active",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": false
-        },
-        "is_completed": {
-          "name": "is_completed",
+        "are_results_public": {
+          "name": "are_results_public",
           "type": "boolean",
           "primaryKey": false,
           "notNull": true,
@@ -92,14 +86,14 @@
           "primaryKey": false,
           "notNull": true
         },
-        "suggested_duration": {
-          "name": "suggested_duration",
+        "suggested_duration_days": {
+          "name": "suggested_duration_days",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "comment": {
-          "name": "comment",
+        "comment_to_admin": {
+          "name": "comment_to_admin",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
@@ -112,11 +106,18 @@
           "notNull": true,
           "default": "now()"
         },
+        "begins_at": {
+          "name": "begins_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
         "ends_at": {
           "name": "ends_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false,
+          "default": "NULL"
         }
       },
       "indexes": {},
@@ -261,10 +262,16 @@
       "name": "users",
       "schema": "",
       "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
         "netid": {
           "name": "netid",
           "type": "text",
-          "primaryKey": true,
+          "primaryKey": false,
           "notNull": true
         },
         "email": {
@@ -291,13 +298,31 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "users_netid_unique": {
+          "name": "users_netid_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "netid"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
     }
   },
   "enums": {
+    "public.poll_state": {
+      "name": "poll_state",
+      "schema": "public",
+      "values": [
+        "draft",
+        "request",
+        "active",
+        "completed"
+      ]
+    },
     "public.question_type": {
       "name": "question_type",
       "schema": "public",

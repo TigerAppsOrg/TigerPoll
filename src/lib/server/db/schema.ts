@@ -18,12 +18,20 @@ export const questionTypeEnum = pgEnum("question_type", [
     "select_all"
 ]);
 
+export const pollStateEnum = pgEnum("poll_state", [
+    "draft",
+    "request",
+    "active",
+    "completed"
+]);
+
 //----------------------------------------------------------------------
 // Tables
 //----------------------------------------------------------------------
 
 export const users = pgTable("users", {
-    netid: text("netid").notNull().primaryKey(),
+    id: serial("id").primaryKey().notNull(),
+    netid: text("netid").notNull().unique(),
     email: text("email").notNull(),
     isAdmin: boolean("is_admin").notNull().default(false),
     isEmailList: boolean("is_email_list").notNull().default(false)
@@ -39,16 +47,16 @@ export const polls = pgTable("polls", {
     userId: text("user_id")
         .notNull()
         .references(() => users.netid),
-    isRequest: boolean("is_request").notNull().default(false),
-    isActive: boolean("is_active").notNull().default(false),
-    isCompleted: boolean("is_completed").notNull().default(false),
+    state: pollStateEnum("state").notNull().default("draft"),
+    areResultsPublic: boolean("are_results_public").notNull().default(false),
     title: text("title").notNull(),
-    suggested_duration: integer("suggested_duration"),
-    comment: text("comment").default(sql`NULL`),
+    suggestedDurationDays: integer("suggested_duration_days"),
+    commentToAdmins: text("comment_to_admin").default(sql`NULL`),
     createdAt: timestamp("created_at")
         .notNull()
         .default(sql`now()`),
-    endsAt: timestamp("ends_at").notNull()
+    beginsAt: timestamp("begins_at").notNull(),
+    endsAt: timestamp("ends_at").default(sql`NULL`)
 });
 
 export const pollRelations = relations(polls, ({ many, one }) => ({

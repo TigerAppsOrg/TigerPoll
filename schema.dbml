@@ -1,3 +1,10 @@
+enum poll_state {
+  draft
+  request
+  active
+  completed
+}
+
 enum question_type {
   multiple_choice
   select_all
@@ -12,14 +19,14 @@ table answers {
 table polls {
   id serial [pk, not null, increment]
   user_id text [not null]
-  is_request boolean [not null, default: false]
-  is_active boolean [not null, default: false]
-  is_completed boolean [not null, default: false]
+  state poll_state [not null, default: 'draft']
+  are_results_public boolean [not null, default: false]
   title text [not null]
-  suggested_duration integer
-  comment text [default: `NULL`]
+  suggested_duration_days integer
+  comment_to_admin text [default: `NULL`]
   created_at timestamp [not null, default: `now()`]
-  ends_at timestamp [not null]
+  begins_at timestamp [not null]
+  ends_at timestamp [default: `NULL`]
 }
 
 table questions {
@@ -37,7 +44,8 @@ table user_has_done_poll {
 }
 
 table users {
-  netid text [pk, not null]
+  id serial [pk, not null, increment]
+  netid text [not null, unique]
   email text [not null]
   is_admin boolean [not null, default: false]
   is_email_list boolean [not null, default: false]
