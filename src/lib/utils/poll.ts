@@ -18,6 +18,7 @@ export type AnswerOptionResults = {
     answer: string;
     count: number;
 };
+
 export type QuestionResults = Omit<Question, "options"> & {
     answerCount: number;
     options: AnswerOptionResults[];
