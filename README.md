@@ -22,13 +22,19 @@ npm run dev
 
 The application should now be running at [http://localhost:5173](http://localhost:5173).
 
+To see components in isolation with Storybook, start the Storybook server:
+
+```bash
+# Start Storybook
+npm run storybook
+```
+
 ## Technologies
 
 The application is built using the following technologies:
 
 - [SvelteKit](https://kit.svelte.dev/) - A full-stack framework for Svelte applications
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
-- [ShadCN Svelte](https://shadcn-svelte.vercel.app/) - A Svelte component library
 - [PostgreSQL](https://www.postgresql.org/) - An open-source relational database management system
 - [DrizzleORM](https://orm.drizzle.team/) - A TypeScript ORM for PostgreSQL
 - [Prettier](https://prettier.io/) - An opinionated code formatter
@@ -40,7 +46,7 @@ If you would like to contribute to the project, please reach out to the TigerApp
 
 ## Credits
 
-The TigerPoll project was created in collaboration between Princeton USG and TigerApps by software developers Caroline Rasmussen '26, Joshua Lau '26, and Leo Stepanewk '25 with input from USG Elections Manager Alex Sorgini '26.
+The TigerPoll project was created in collaboration between Princeton USG and TigerApps by software developers Caroline Rasmussen '26 and Joshua Lau '26 with input from USG Elections Manager Alex Sorgini '26.
 
 ## License
 
