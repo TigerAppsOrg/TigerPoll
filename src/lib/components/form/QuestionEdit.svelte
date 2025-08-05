@@ -1,13 +1,12 @@
 <script lang="ts">
     import {
-        type Question,
         typeLabels,
+        type Question,
         type QuestionType
     } from "$lib/utils/poll";
-    import { flip } from "svelte/animate";
-    import { slide } from "svelte/transition";
-    import { tick } from "svelte";
     import Trash from "phosphor-svelte/lib/Trash";
+    import { tick } from "svelte";
+    import { slide } from "svelte/transition";
 
     interface Props {
         question: Question;
