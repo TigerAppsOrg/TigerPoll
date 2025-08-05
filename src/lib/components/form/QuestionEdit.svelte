@@ -71,15 +71,27 @@
     </div>
 
     <!-- Question Type Toggle -->
-    <div class="mt-4 flex rounded-full bg-gray-light p-1">
+    <div class="relative mt-4 flex rounded-full bg-gray-light p-1">
+        <div
+            class="absolute bottom-1 left-1 top-1 w-1/2 rounded-full shadow transition-all duration-300 ease-in-out"
+            class:bg-std-violet-light={question.type === "multiple_choice"}
+            class:bg-std-orange-light={question.type === "select_all"}
+            style:transform={question.type === "select_all"
+                ? "translateX(100%)"
+                : "translateX(0)"}>
+        </div>
+
         {#each Object.keys(typeLabels) as type (type)}
             {@const isSelected = question.type === type}
             <button
                 onclick={() => setQuestionType(type as QuestionType)}
-                class="w-1/2 rounded-full py-1.5 text-center text-sm font-medium transition-colors duration-200
-                {isSelected
-                    ? 'bg-std-yellow-default text-gray-light shadow'
-                    : 'text-gray-dark-muted hover:bg-gray-light-accent'}">
+                class="relative z-10 w-1/2 rounded-full py-1.5 text-center text-sm font-medium transition-colors duration-200"
+                class:!font-semibold={isSelected}
+                class:text-std-violet-dark={isSelected &&
+                    type === "multiple_choice"}
+                class:text-std-orange-dark={isSelected && type === "select_all"}
+                class:text-gray-dark-muted={!isSelected}
+                class:hover:bg-gray-light-accent={!isSelected}>
                 {typeLabels[type as QuestionType]}
             </button>
         {/each}
@@ -119,7 +131,7 @@
             onclick={addOption}
             class="w-full rounded-full border-2 border-dashed border-gray-light py-1.5
             text-sm font-semibold text-gray-dark-muted transition-colors
-            hover:border-std-orange-default hover:text-std-orange-default">
+            hover:border-std-orange-default">
             + Add Option
         </button>
     </div>
