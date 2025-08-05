@@ -72,7 +72,7 @@
             bind:value={question.question}
             placeholder="Type your question here..."
             class="w-full border-b-2 border-gray-light bg-transparent pb-1
-            text-lg font-semibold text-gray-dark outline-none transition-colors focus:border-std-orange-default" />
+            text-lg font-semibold text-gray-dark outline-none transition-colors focus:border-std-blue-default" />
     </div>
 
     <!-- Question Type Toggle -->
@@ -117,8 +117,8 @@
                     onkeydown={(e) => handleOptionKeydown(e, index)}
                     class="h-9 w-full rounded-full border bg-gray-light px-4 text-sm
                     text-gray-dark shadow-sm transition-colors
-                    placeholder:text-gray-dark-muted focus:border-std-orange-default focus:outline-none focus:ring-1
-                    focus:ring-std-orange-default" />
+                    placeholder:text-gray-dark-muted focus:border-std-blue-default focus:outline-none focus:ring-1
+                    focus:ring-std-blue-default" />
                 <button
                     onclick={() => deleteOption(index)}
                     title="Delete option"
@@ -136,7 +136,7 @@
             onclick={addOption}
             class="w-full rounded-full border-2 border-dashed border-gray-light py-1.5
             text-sm font-semibold text-gray-dark-muted transition-colors
-            hover:border-std-orange-default">
+            hover:border-std-blue-default">
             + Add Option
         </button>
     </div>
