@@ -60,10 +60,10 @@ const config: Config = {
                 "gray": {
                     "light": "#F8F8F8",
                     "light-accent": "#E8E8E8",
-                    "light-muted": "#D0D0D0",
-                    "dark": "#242424",
+                    "light-muted": "#B0B0B0",
+                    "dark-muted": "#444444",
                     "dark-accent": "#333333",
-                    "dark-muted": "#444444"
+                    "dark": "#242424"
                 }
             }
         }
