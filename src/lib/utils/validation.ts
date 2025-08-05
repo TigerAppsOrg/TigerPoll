@@ -1,3 +1,10 @@
+export const VALIDATION_CONSTANTS = {
+    MAX_ANSWER_OPTIONS: 10,
+    MIN_ANSWER_OPTIONS: 2,
+    MAX_ANSWER_LENGTH: 100,
+    MAX_QUESTION_LENGTH: 200
+};
+
 export type ArrValidationError = {
     index: number;
     message: string;
@@ -13,11 +20,10 @@ export const validateAnswerOptions = (
             errors.push({ index, message: "Answer option cannot be empty." });
         }
 
-        const MAX_ANSWER_LENGTH = 100;
-        if (trimmedOption.length > MAX_ANSWER_LENGTH) {
+        if (trimmedOption.length > VALIDATION_CONSTANTS.MAX_ANSWER_LENGTH) {
             errors.push({
                 index,
-                message: `Answer option must be shorter than ${MAX_ANSWER_LENGTH} characters.`
+                message: `Answer option must be shorter than ${VALIDATION_CONSTANTS.MAX_ANSWER_LENGTH} characters.`
             });
         }
 
@@ -41,10 +47,9 @@ export const validateQuestion = (question: string): string[] => {
         errors.push("Question cannot be empty.");
     }
 
-    const MAX_QUESTION_LENGTH = 200;
-    if (trimmedQuestion.length > MAX_QUESTION_LENGTH) {
+    if (trimmedQuestion.length > VALIDATION_CONSTANTS.MAX_QUESTION_LENGTH) {
         errors.push(
-            `Question must be shorter than ${MAX_QUESTION_LENGTH} characters.`
+            `Question must be shorter than ${VALIDATION_CONSTANTS.MAX_QUESTION_LENGTH} characters.`
         );
     }
 

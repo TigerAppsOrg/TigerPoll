@@ -17,12 +17,16 @@
 
     let optionInputs: HTMLInputElement[] = [];
 
+    // Create stable keys for each option
+    let optionKeys = $state(question.options.map(() => Symbol()));
+
     function setQuestionType(type: QuestionType) {
         question.type = type;
     }
 
     function addOption() {
         question.options = [...question.options, ""];
+        optionKeys = [...optionKeys, Symbol()];
 
         tick().then(() => {
             const lastInput = optionInputs[optionInputs.length - 1];
@@ -34,6 +38,7 @@
 
     function deleteOption(index: number) {
         question.options = question.options.filter((_, i) => i !== index);
+        optionKeys = optionKeys.filter((_, i) => i !== index);
     }
 
     async function handleOptionKeydown(event: KeyboardEvent, index: number) {
@@ -99,7 +104,7 @@
 
     <!-- Answer Options List -->
     <div class="mt-4 flex flex-col gap-2">
-        {#each question.options as option, index (index)}
+        {#each question.options as option, index (optionKeys[index])}
             <div
                 class="flex items-center gap-2"
                 animate:flip={{ duration: 250 }}
