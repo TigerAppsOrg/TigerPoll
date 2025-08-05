@@ -107,7 +107,6 @@
         {#each question.options as option, index (optionKeys[index])}
             <div
                 class="flex items-center gap-2"
-                animate:flip={{ duration: 250 }}
                 transition:slide={{ duration: 200 }}>
                 <input
                     type="text"
@@ -116,9 +115,9 @@
                     bind:this={optionInputs[index]}
                     onkeydown={(e) => handleOptionKeydown(e, index)}
                     class="h-9 w-full rounded-full border bg-gray-light px-4 text-sm
-                    text-gray-dark shadow-sm transition-colors
-                    placeholder:text-gray-light-muted focus:border-std-blue-default focus:outline-none focus:ring-1
-                    focus:ring-std-blue-default" />
+                text-gray-dark shadow-sm transition-colors
+                placeholder:text-gray-light-muted focus:border-std-blue-default focus:outline-none focus:ring-1
+                focus:ring-std-blue-default" />
                 <button
                     onclick={() => deleteOption(index)}
                     title="Delete option"
